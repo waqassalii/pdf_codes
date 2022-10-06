@@ -1,12 +1,40 @@
 <odoo>
-  <!--  <data>
 
-        <template id="aces_invoice_report_template_inherit" inherit_id="aces_invoice_report.report_prince_art_view">
-            <xpath expr="//td[@name='duplicate']" position="replace">
-                <td colspan="2" style="text-align:center;">
-                    <h4>ORIGINAL</h4>
-                </td>
-            </xpath>
-        </template>
-    </data>-->
+<!--    <template id="report_prince_art_view">-->
+<!--        <t t-call="web.html_container">-->
+<!--            <t t-foreach="docs" t-as="doc">-->
+<!--                <t t-set="no_of_copies" t-value="doc.partner_id.delivery"/>-->
+
+<!--                <t t-call="web.basic_layout">-->
+<!--                    <t t-set="no_of_copies" t-value="doc.partner_id.delivery"/>-->
+<!--                    <t t-foreach="no_of_copies+1" t-as="num">-->
+
+<!--                        <t t-call="aces_invoice_report.report_prince_art_id"/>-->
+<!--                    </t>-->
+
+<!--                </t>-->
+<!--            </t>-->
+<!--        </t>-->
+<!--    </template>-->
+
+
+
+<!--    <report-->
+<!--            id="report_prince_art_template_id"-->
+<!--            model="account.move"-->
+<!--            string="Print Invoice multiple"-->
+<!--            name="aces_invoice_report.report_prince_art_template_view"-->
+<!--            file="aces_invoice_report.report_prince_art_template_view"-->
+<!--            report_type="qweb-pdf"/>-->
+
+
+
+<!--    &lt;!&ndash; <template id="aces_invoice_report_template_inherit" inherit_id="aces_invoice_report.report_prince_art_view">-->
+<!--         <xpath expr="//td[@name='duplicate']" position="replace">-->
+<!--             <td colspan="2" style="text-align:center;">-->
+<!--                 <h4>ORIGINAL</h4>-->
+<!--             </td>-->
+<!--         </xpath>-->
+<!--     </template>&ndash;&gt;-->
+
 </odoo>

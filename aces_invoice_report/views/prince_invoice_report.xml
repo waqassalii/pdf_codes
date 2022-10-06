@@ -5,7 +5,7 @@
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-set="no_of_copies" t-value="doc.partner_id.delivery"/>
-                    <t t-foreach="no_of_copies+1" t-as="num">
+                    <t t-foreach="no_of_copies" t-as="num">
                         <t t-call="web.basic_layout">
                             <div class="page">
 
@@ -128,23 +128,21 @@
                                                     <td/>
                                                     <td/>
                                                     <td colspan="2" style="text-align:center;" name="duplicate">
-                                                        <t t-if="num!=0">
-                                                            <t t-if="num==1">
+                                                            <t t-if="num==0">
                                                                 <h4>Original</h4>
                                                             </t>
-                                                            <t t-if="num==2">
+                                                            <t t-if="num==1">
                                                                 <h4>Duplicate</h4>
                                                             </t>
-                                                            <t t-if="num==3">
+                                                            <t t-if="num==2">
                                                                 <h4>Triplicate</h4>
                                                             </t>
-                                                            <t t-if="num==4">
+                                                            <t t-if="num==3">
                                                                 <h4>Additional Copy</h4>
                                                             </t>
-                                                            <t t-if="num==5">
+                                                            <t t-if="num==4">
                                                                 <h4>Office Copy</h4>
                                                             </t>
-                                                        </t>
                                                     </td>
                                                     <!--                                               <td></td>-->
                                                 </tr>
@@ -322,27 +320,7 @@
 
                                     </div>
                                 </div>
-                                <!--<div class="row mt-1">
-                                    <div class="col-12">
-                                        <table class="table table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="border-top"></td>
-                                                    <td class="border-top"></td>
-                                                    <td class="border-top"></td>
-                                                    <td class="border-top"></td>
-                                                    <td class="border-top"></td>
-                                                    <td class="border-top"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>-->
+
                                 <br/>
                                 <div class="row">
                                     <div class="col-12">
