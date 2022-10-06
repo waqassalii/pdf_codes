@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_prince_art_view">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-set="no_of_copies" t-value="doc.partner_id.delivery"/>
+                    <t t-foreach="no_of_copies+1" t-as="num">
+                        <t t-call="web.basic_layout">
+                            <div class="page">
+
+                                <div class="header mb-0"
+                                     style="width:100%;margin-left:-30px;margin-right:-50;margin-top:-30px">
+                                    <div class="row">
+                                        <img src="aces_invoice_report/static/src/img/header2.jpg"
+                                             style="display:flex;width:100%;height:200px;margin-top:0px"
+                                             alt="Header not available"/>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row m-1">
+                                            <div class="col-4"></div>
+                                            <div class="col-4 text-center"
+                                                 style="vertical-align:center;border:1px solid black;border-radius:10px">
+                                                <b>
+                                                    <span style="font-size:25px">SALES TAX INVOICE</span>
+                                                </b>
+                                            </div>
+                                            <div class="col-4"></div>
+                                        </div>
+
+                                        <div class="row m-1">
+                                            <div class="col-3"></div>
+                                            <div class="col-5 text-center ml-5"
+                                                 style="padding:0;vertical-align:bottom;border:1px solid black;border-radius:10px">
+                                                <b>
+                                                    <span style="font-size:20px">S.Tax Reg. No: 12-00-3000-511-64</span>
+                                                </b>
+                                            </div>
+                                            <div class="col-3"></div>
+                                        </div>
+                                        <div class="row m-1">
+                                            <div class="col-4"></div>
+                                            <div class="col-3 text-center ml-5"
+                                                 style="padding:0;vertical-align:bottom;border:1px solid black;border-radius:10px">
+                                                <span style="font-size:20px;font-weight:600">
+                                                    N.T.No: 3280528-4
+                                                </span>
+                                            </div>
+                                            <div class="col-4"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <table class="table table-borderless">
+                                            <tbody style="vertical-align:middle;line-height:15px">
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td colspan="2" style="text-align:center;">
+                                                    </td>
+                                                    <!--                                               <td></td>-->
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:35%">
+                                                        Buyer's Name:
+                                                    </th>
+                                                    <td class="text-left" colspan="3"><t t-esc="doc.partner_id.name"/></td>
+                                                    <!--                                                <th class="text-right"></th>-->
+                                                    <!--                                                <td class="text-left"></td>-->
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        Address:
+                                                    </th>
+                                                    <td class="text-left">
+                                                        <t t-esc="doc.partner_id"
+                                                           t-options='{"widget": "contact", "fields": ["address","street","city"],"no_marker": True}'/>
+                                                        <!--                                                    16-KARACHI OVERSEAS COOPERATIVE HOUSING-->
+                                                        <!--                                                    SOCIETY,AMIR KHUSRO ROAD KARACHI.-->
+                                                    </td>
+                                                    <th class="text-right"></th>
+                                                    <td class="text-left"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:30%">
+                                                        S.T. Reg. No :
+                                                    </th>
+                                                    <td class="text-left">
+                                                        <t t-esc="doc.partner_id.vat"/>
+                                                    </td>
+                                                    <th class="text-right"></th>
+                                                    <td class="text-left"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th style="width:30%">
+                                                        Telephone No:
+                                                    </th>
+                                                    <td class="text-left">
+                                                        <t t-esc="doc.partner_id.phone"/>
+                                                    </td>
+                                                    <th class="text-right"></th>
+                                                    <td class="text-left"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        N.T.No :
+                                                    </th>
+                                                    <td class="text-left">
+                                                        <t t-esc="doc.partner_id.ntn_no"/>
+                                                    </td>
+                                                    <th class="text-right"></th>
+                                                    <td class="text-left"></td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                    <div class="col-6">
+                                        <table class="table table-borderless">
+                                            <tbody style="vertical-align:middle;line-height:15px">
+                                                <tr>
+                                                    <td/>
+                                                    <td/>
+                                                    <td colspan="2" style="text-align:center;" name="duplicate">
+                                                        <t t-if="num!=0">
+                                                            <t t-if="num==1">
+                                                                <h4>Original</h4>
+                                                            </t>
+                                                            <t t-if="num==2">
+                                                                <h4>Duplicate</h4>
+                                                            </t>
+                                                            <t t-if="num==3">
+                                                                <h4>Triplicate</h4>
+                                                            </t>
+                                                            <t t-if="num==4">
+                                                                <h4>Additional Copy</h4>
+                                                            </t>
+                                                            <t t-if="num==5">
+                                                                <h4>Office Copy</h4>
+                                                            </t>
+                                                        </t>
+                                                    </td>
+                                                    <!--                                               <td></td>-->
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-right"/>
+                                                    <td class="text-left"/>
+                                                    <th style="width:40%">S. Tax Invoice No. :</th>
+                                                    <td class="text-left"><t t-esc="doc.name"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-right"/>
+                                                    <td class="text-left"/>
+                                                    <th>Dated :</th>
+                                                    <td class="text-left"><t t-esc="doc.invoice_date"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-right"/>
+                                                    <td class="text-left"/>
+                                                    <th style="width:20%">P.O No. :</th>
+                                                    <td class="text-left"><t t-esc="doc.ref"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-right"/>
+                                                    <td class="text-left"/>
+                                                    <th style="width:20%">Challan No.</th>
+                                                    <td class="text-left">2238/19</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-right"/>
+                                                    <td class="text-left"/>
+                                                    <th class="text-right"/>
+                                                    <td class="text-left"/>
+                                                    <!--<th style="width:30%">Time of Supply</th>
+                                                    <td class="text-left">not available</td>-->
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4"></div>
+                                    <div class="col-4">
+                                        <b><h5>TERMS OF SALES : CREDIT</h5></b>
+                                    </div>
+                                    <div class="col-4"></div>
+                                </div>
+                                <div class="row">
+                                    <style>
+                                        th {
+                                        height:10px
+                                        }
+
+                                    </style>
+                                    <div class="col-12">
+                                        <table class="table table-borderless table-sm" style="font-size:15px">
+                                            <thead class="text-center border border-dark align-middle" style="">
+                                                <tr class="align-middle text-center border border-dark">
+                                                    <th rowspan="2" class="align-middle border border-dark">S#</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">CODE</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">DESCRIPTION OF GOODS</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">UNIT</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">QUANTITY</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">RATES</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">VALUE<br/>EXCL. TAXES</th>
+                                                    <th colspan="2" class="align-middle border border-dark">SALES TAX</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">S.E.D.<br/>VALUE</th>
+                                                    <th rowspan="2" class="align-middle border border-dark">VALUE<br/>INCL. TAXES</th>
+                                                </tr>
+                                                <tr>
+
+                                                    <th class="align-middle border border-dark">@</th>
+                                                    <th class="align-middle border border-dark">VALUE</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-center">
+                                                <t t-set="i" t-value="1"/>
+                                                <t t-set="total_tax_amount" t-value="0"/>
+                                                <t t-foreach="doc.invoice_line_ids" t-as="line">
+                                                    <t t-foreach="line.tax_ids" t-as="tax">
+                                                        <tr>
+                                                            <td><t t-esc="i"/> </td>
+                                                            <td><t t-esc="line.product_id.default_code"/> </td>
+                                                            <td><t t-esc="line.product_id.name"/> </td>
+                                                            <td><span>each</span></td>
+                                                            <td><t t-esc="line.quantity"/></td>
+                                                            <td><t t-esc="line.price_unit"/></td>
+                                                            <td><t t-esc="line.price_subtotal"/></td>
+                                                            <td><t t-esc="tax.name"/></td>
+                                                            <t t-set="tax_amount" t-value="line.price_total - line.price_subtotal "/>
+                                                            <td><t t-esc="tax_amount"/> </td>
+                                                            <t t-set="total_tax_amount" t-value="total_tax_amount + tax_amount"/>
+                                                            <td></td>
+                                                            <td><t t-esc="line.price_total"/></td>
+                                                            <t t-set="i" t-as="i + 1"/>
+                                                        </tr>
+                                                    </t>
+                                                </t>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="border-bottom border-top"><t t-esc="doc.amount_untaxed"/></td>
+                                                    <td class="border-bottom border-top"></td>
+                                                    <td class="border-bottom border-top"><t t-esc="total_tax_amount"/> </td>
+                                                    <td class="border-bottom border-top"></td>
+                                                    <td class="border-bottom border-top"><t t-esc="doc.amount_total"/></td>
+                                                </tr>
+                                                <tr>
+                                                    <td></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                                <!--<div class="row mt-1">
+                                    <div class="col-12">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                    <td class="border-top"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>-->
+                                <br/>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <table class="table table-bordered table-sm">
+                                            <tbody>
+                                                <tr>
+                                                    <td><t t-esc="doc.currency_id.amount_to_text(doc.amount_total)"/> </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="row">
+                                    <div class="col-6 text-left">
+                                        <p style="font-weight:900;font-size:15px">E.and.O.E</p>
+                                    </div>
+                                    <div class="col-6"></div>
+                                </div>
+
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="paperformat_prince_art" model="report.paperformat">
+            <field name="name">A4 new</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">55</field>
+            <!--            <field name="margin_top">105</field>-->
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">50</field>
+            <!--            <field name="header_spacing">99</field>-->
+            <field name="dpi">90</field>
+        </record>
+        <report
+                id="report_prince_art_id"
+                model="account.move"
+                string="Prince Invoice"
+                name="aces_invoice_report.report_prince_art_view"
+                file="aces_invoice_report.report_prince_art_view"
+                paperformat="paperformat_prince_art"
+                report_type="qweb-pdf"/>
+
+
+    </data>
+</odoo>

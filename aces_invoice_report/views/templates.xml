@@ -1,0 +1,12 @@
+<odoo>
+  <!--  <data>
+
+        <template id="aces_invoice_report_template_inherit" inherit_id="aces_invoice_report.report_prince_art_view">
+            <xpath expr="//td[@name='duplicate']" position="replace">
+                <td colspan="2" style="text-align:center;">
+                    <h4>ORIGINAL</h4>
+                </td>
+            </xpath>
+        </template>
+    </data>-->
+</odoo>
