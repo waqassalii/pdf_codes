@@ -20,6 +20,7 @@
                                     <tr>
                                         <td>
                                             <t t-esc="o['categ_name']"/>
+                                            <t t-esc="o['categ_name']"/>
                                         </td>
                                         <td>
                                             <t t-esc="o['categ_value']"/>
